@@ -1,11 +1,6 @@
 from pyspark.sql.types import *
 from pyspark.sql.functions import *
-from pyspark.sql import SparkSession
 
-spark = SparkSession\
-        .builder\
-        .appName("Find null")\
-        .getOrCreate();
 
 schema = StructType([
 StructField('id', LongType(), False),
@@ -14,7 +9,7 @@ StructField('dept', StringType(), True),
 StructField('deptid', LongType(), True)
 ])
 
-def empRun():
+def empRun(spark):
     df = spark.createDataFrame([(1,'anu','csi',10), (2,'Bob','it',12),(3,'mogal','csi',10),(4,'baig','csi',10),(5,'ameer','ece',11),(6,'asma','ece',11)], schema)
     print("Table")
     print(df.show())

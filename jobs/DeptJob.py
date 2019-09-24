@@ -20,13 +20,7 @@ Find the highest agg salary of dept of each location.
 
 from pyspark.sql.types import *
 from pyspark.sql.functions import *
-from pyspark.sql import SparkSession
 from pyspark.sql import Window as window
-
-spark = SparkSession\
-        .builder\
-        .appName("Find null")\
-        .getOrCreate();
 
 schema = StructType([
 StructField('eid', LongType(), False),
@@ -36,7 +30,7 @@ StructField('sal',LongType(), True),
 
 ])
 
-def deptRun():
+def deptRun(spark):
     df = spark.createDataFrame([(1,'hyd','Adm',10000),
                             (2,'hyd','IT', 12000),
                             (3,'hyd','Adm',20000),
